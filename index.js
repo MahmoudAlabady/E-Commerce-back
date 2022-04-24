@@ -9,12 +9,15 @@ mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true})
 .catch(err => console.error('Connecttuon faild ...',err))
 app.use(cors());
 app.options('*', cors())
+const auth = require('./middelware/auth');
+const errHandler = require('./middelware/err-handler');
 
 
 //middleware
 app.use(express.json());
 app.use(morgan('tiny'));
-
+app.use(auth());
+app.use(errHandler)
 //Routes
 const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
