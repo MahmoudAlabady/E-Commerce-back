@@ -9,6 +9,7 @@ function auth(){
         isRevoked: isRevokedCallback
     }).unless({
         path:[
+            {url: /\/public\/uploads(.*)/, methods: ['GET','OPTIONS']},
             {url: /\/api\/products(.*)/, methods: ['GET','OPTIONS']},
             {url: /\/api\/categories(.*)/, methods: ['GET','OPTIONS']},
 

@@ -17,7 +17,9 @@ const errHandler = require('./middelware/err-handler');
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(auth());
+app.use('/puplic/uploads', express.static(__dirname + 'puplic/uploads'))
 app.use(errHandler)
+
 //Routes
 const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
